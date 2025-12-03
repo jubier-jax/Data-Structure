@@ -1,1 +1,1 @@
-this is code for data structure
+this reposritory  is only for data structure
