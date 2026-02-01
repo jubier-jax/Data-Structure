@@ -7,33 +7,41 @@ struct Node {
     Node* next;
 };
 
-int main() {
-    Node* head = NULL;
-    int pos, val;
-    cin >> pos >> val;
+int main(){
+    int n; 
+    cin>>n;
+    Node* head=NULL;
+    Node* tail=NULL;
 
-    Node* newNode = new Node{val, NULL, NULL};
+    for(int i=0;i<n;i++)
+    {
+        int x; 
+        cin>>x;
+        
+        Node* node=new Node{x,tail,NULL
+    };
+        if(!head) head=node;
+        else tail->next=node;
+        tail=node;
+    }
 
-    if(pos == 1) {
-        newNode->next = head;
-        if(head) head->prev = newNode;
-        head = newNode;
+    int pos,val; 
+    cin>>pos>>val;
+
+    if(pos==1){
+        Node* node=new Node{val,NULL,head};
+        head->prev=node;
+        head=node;
     } else {
-        Node* temp = head;
-        for(int i = 1; i < pos - 1; i++)
-            temp = temp->next;
+        Node* temp=head;
+        for(int i=1;i<pos-1;i++)
+            temp=temp->next;
 
-        newNode->next = temp->next;
-        if(temp->next)
-            temp->next->prev = newNode;
-
-        temp->next = newNode;
-        newNode->prev = temp;
+        Node* node=new Node{val,temp,temp->next};
+        if(temp->next) temp->next->prev=node;
+        temp->next=node;
     }
 
-    Node* t = head;
-    while(t) {
-        cout << t->data << " ";
-        t = t->next;
-    }
+    for(Node* t=head;t;t=t->next)
+        cout<<t->data<<" ";
 }
