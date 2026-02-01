@@ -8,13 +8,30 @@ struct Node {
 };
 
 int main() {
-    Node* head = NULL;
-    int val;
-    cin >> val;
+    int n;
+    cin >> n;
 
-    Node* newNode = new Node{val, NULL, head};
-    if(head != NULL)
-        head->prev = newNode;
+    Node* head = NULL;
+    Node* tail = NULL;
+
+    for(int i = 0; i < n; i++) {
+        int val;
+        cin >> val;
+        Node* node = new Node{val, tail, NULL};
+
+        if(head == NULL)
+            head = node;
+        else
+            tail->next = node;
+
+        tail = node;
+    }
+
+    int x; 
+    cin >> x;
+
+    Node* newNode = new Node{x, NULL, head};
+    head->prev = newNode;
     head = newNode;
 
     Node* temp = head;
