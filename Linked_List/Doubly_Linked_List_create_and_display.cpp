@@ -8,29 +8,27 @@ struct Node {
 };
 
 int main() {
-    Node* head = NULL;
-    int n, val;
-
-    cout << "Enter number of nodes: ";
+    int n;
     cin >> n;
 
-    for(int i = 0; i < n; i++) {
-        cin >> val;
-        Node* newNode = new Node{val, NULL, NULL};
+    Node* head = NULL;
+    Node* tail = NULL;
 
-        if(head == NULL) {
+    for(int i = 0; i < n; i++) {
+        int val;
+        cin >> val;
+        Node* newNode = new Node{val, tail, NULL};
+
+        if(head == NULL)
             head = newNode;
-        } else {
-            Node* temp = head;
-            while(temp->next != NULL)
-                temp = temp->next;
-            temp->next = newNode;
-            newNode->prev = temp;
-        }
+        else
+            tail->next = newNode;
+
+        tail = newNode;
     }
 
     Node* temp = head;
-    while(temp != NULL) {
+    while(temp) {
         cout << temp->data << " <-> ";
         temp = temp->next;
     }
