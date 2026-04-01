@@ -6,13 +6,19 @@ int stackArr[MAX];
 int top = -1;
 
 int main() {
-    int x;
-    cin >> x;
+    int n, x;
+    cin >> n;
 
-    if (top == MAX - 1) {
-        cout << "Overflow";
-    } else {
+    for(int i = 0; i < n; i++) {
+        cin >> x;
+        if(top == MAX - 1) {
+            cout << "Overflow\n";
+            break;
+        }
         stackArr[++top] = x;
-        cout << stackArr[top];
+    }
+
+    for(int i = top; i >= 0; i--) {
+        cout << stackArr[i] << " ";
     }
 }
